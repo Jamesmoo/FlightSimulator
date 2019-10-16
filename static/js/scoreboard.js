@@ -19,10 +19,20 @@ $(function(){
       var htmlRecord = "";
 
       if(record.rank === 1){
-        htmlRecord = "<tr><td class='winner record-"+ count +"'>" + record.rank + "</td><td>" + record.user + "</td><td>" + record.score + "</td><td>" + record.time + "</td></tr>";
+        htmlRecord = "<tr><td class='winner record-"+ count +"'>" 
+          + "<img src='./static/images/star.png' class='star-align'>"
+          + record.rank 
+          + "</td><td>" 
+          + record.user + "</td><td>" 
+          + record.score + "</td><td>" 
+          + record.time + "</td></tr>";
       
       }else{
-        htmlRecord = "<tr><td class='record-"+ count +"'>" + record.rank + "</td><td>" + record.user + "</td><td>" + record.score + "</td><td>" + record.time + "</td></tr>";
+        htmlRecord = "<tr><td class='record-"+ count +"'>" 
+          + record.rank + "</td><td>" 
+          + record.user + "</td><td>" 
+          + record.score + "</td><td>" 
+          + record.time + "</td></tr>";
       }
 
       $(htmlRecord).appendTo('tbody').hide().show(2000);  

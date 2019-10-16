@@ -7,11 +7,11 @@ body {
 
 @font-face {
   font-family:'Glue Gun';
-  src: url(GlueGun-GW8Z.ttf);
+  src: url(../res/GlueGun-GW8Z.ttf);
 }
 @font-face {
   font-family:'Blockletter';
-  src: url(Blockletter.otf);
+  src: url(../res/Blockletter.otf);
 }
 
 
@@ -38,7 +38,7 @@ body {
       rgba(0, 0, 0, 0.50), 
       rgba(0, 0, 0, 0.50)
     ),
-    url("images/aerial-view.jpg");
+    url("../images/aerial-view.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }

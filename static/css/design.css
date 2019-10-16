@@ -1,0 +1,151 @@
+html,
+body {
+  min-height: 100vh;
+  margin: 0;
+  font-family:'Gruppo';
+}
+
+@font-face {
+  font-family:'Glue Gun';
+  src: url(../res/GlueGun-GW8Z.ttf);
+}
+@font-face {
+  font-family:'Blockletter';
+  src: url(../res/Blockletter.otf);
+}
+
+
+html {
+  background: #090000;
+  font-size: calc(1em + 3vmax);
+  line-height: 1.1;
+  text-align: center;
+}
+
+body {
+  display: grid;
+  grid-gap: 1em;
+  /*grid-template-columns: repeat(auto-fit, minmax(0, 12ch));*/
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  
+}
+
+.tinted-image {
+  background-image: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.50), 
+      rgba(0, 0, 0, 0.50)
+    ),
+    url("../images/aerial-view.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.scoreboard{
+	/*background: #000;*/
+  /*	box-shadow: 0px 0px 0 #40ff22,
+    0px 0px 4px #30ff1f,
+    0px 0px 8px #20ff1b,
+    0px 0px 16px #10ff18;*/
+    height:600px;
+    /*width:1500px;*/
+    width:100vw;
+}
+
+x-sign {
+  --interval: 1s;
+  display: block;
+  text-shadow: 
+    0 0 10px var(--color1)
+  will-change: filter, color;
+  filter: saturate(60%);
+  color: #fff;
+  font-family: 'Blockletter';
+  font-weight:bold;
+  /*background-color: blue;*/
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+  padding: 10px;
+  font-size: 1.5em;
+  letter-spacing:.05em;
+  text-align:left;
+      margin-left: 20px;
+    margin-right: 20px;
+    padding-left: 68px;
+}
+
+.scoreboardTable{
+	color:#fff;
+	font-size: 30px;
+    width: 100%;
+    border-collapse: seperate;
+	/*border-spacing:.5em;
+*/
+ 	border-spacing:0 8px;  
+ 	padding-left:70px;
+ 	padding-right:70px; 
+}
+
+.scoreboardTable tr{
+
+}
+
+.scoreboardTable th{
+	font-size:35px;
+	background-color:#424949;
+	padding:10px;
+}
+
+.scoreboardTable td{
+	padding:10px;
+}
+
+.scoreboardTable tr{
+	border:5px solid transparent;
+	font-weight:bold;
+
+}
+
+.scoreboardTable tr:nth-child(even)
+{
+	/*background-color:#515A5A ;*/
+	/*background-color:#1C2833;*/
+
+	background-color:#1a315e;
+	border:5px solid transparent;
+}
+
+.scoreboardTable tr:nth-child(odd)
+{
+	background-color:#000;
+	border:5px solid transparent;
+}
+
+.winner{
+	font-size:40px;
+}
+
+.airforce{
+	height: 1.1em;
+    float: right;
+}
+
+.smallTitle{
+	FONT-SIZE: 50PX;
+    DISPLAY: contents;
+    FONT-STYLE: ITALIC;
+}
+
+
+.flightOptions
+{
+	width:100%;
+}
+.flightOptions th
+{
+ font-family: 'Blockletter';
+}
+

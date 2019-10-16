@@ -25,7 +25,7 @@ $(function(){
         htmlRecord = "<tr><td class='record-"+ count +"'>" + record.rank + "</td><td>" + record.user + "</td><td>" + record.score + "</td><td>" + record.time + "</td></tr>";
       }
 
-      $('tbody').append(htmlRecord);      
+      $(htmlRecord).appendTo('tbody').hide().show(2000);  
       count++;
     }
   }

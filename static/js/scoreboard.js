@@ -1,5 +1,4 @@
 $(function(){
-
   function getLeaderboard(){
     $.ajax({
         url : "http://127.0.0.1:5000/getlist",
@@ -15,29 +14,23 @@ $(function(){
   }
     
   function loadResults(data){
-    var id = 1;
-    for(const result of data.results){
+    var count = 1;
+    for(const record of data.results){
+      var htmlRecord = "";
 
-      var thisMarkup = "<tr class='record-number-" + id;
-      if(result.rank === 1){
-        thisMarkup += " winner'>";
+      if(record.rank === 1){
+        htmlRecord = "<tr><td class='winner record-"+ count +"'>" + record.rank + "</td><td>" + record.user + "</td><td>" + record.score + "</td><td>" + record.time + "</td></tr>";
+      
       }else{
-        thisMarkup += ">";
+        htmlRecord = "<tr><td class='record-"+ count +"'>" + record.rank + "</td><td>" + record.user + "</td><td>" + record.score + "</td><td>" + record.time + "</td></tr>";
       }
 
-      thisMarkup += "<td>" + result.rank + "</td>";
-      thisMarkup += "<td>" + result.user + "</td>";
-      thisMarkup += "<td>" + result.score + "</td>";
-      thisMarkup += "<td>" + result.time+ "</td>";
-      thisMarkup += "</tr>";
-      
-
-      //add the result to the table
-      $('tbody').append(thisMarkup);
-
-      id++;
+      $('tbody').append(htmlRecord);      
+      count++;
     }
   }
   
-  getLeaderboard();
+  $(window).bind("load", function(){
+    getLeaderboard();
+  });
 });

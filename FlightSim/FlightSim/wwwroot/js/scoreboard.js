@@ -1,7 +1,7 @@
 $(function(){
   function getLeaderboard(){
     $.ajax({
-        url: "https://localhost:5001/scoreboardlisting",
+        url: "/scoreboardlisting",
         type : 'GET',
         dataType : 'json',
         success : function(data) {              

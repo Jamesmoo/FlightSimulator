@@ -39,13 +39,18 @@ $(function(){
       count++;
     }
 
-    $('.record').mouseenter(function () {
+      $('.record').mouseenter(function () {
         $(this).addClass('record-focus');
     });
 
     $('.record').mouseleave(function () {
         $(this).removeClass('record-focus');
     });
+
+      $('.record').on('click', function () {
+          var user = $(this).find('td')[1].innerText.replace(" ", "_");
+          window.location.href = "/track.html?user=" + user;
+      });
   }
   
   $(window).bind("load", function(){

@@ -153,3 +153,10 @@ x-sign {
   height:30px; 
   padding-right:10px
 }
+
+.record-focus {
+    border: 2px solid #b5b5b5;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}

@@ -19,7 +19,7 @@ $(function(){
       var htmlRecord = "";
 
       if(record.rank === 1){
-        htmlRecord = "<tr><td class='winner record-"+ count +"'>" 
+        htmlRecord = "<tr class='record'><td class='winner num-"+ count +"'>" 
           + "<img src='./images/star.png' class='star-align'>"
           + record.rank 
           + "</td><td>" 
@@ -28,7 +28,7 @@ $(function(){
           + record.time + "</td></tr>";
       
       }else{
-        htmlRecord = "<tr><td class='record-"+ count +"'>" 
+        htmlRecord = "<tr class='record'><td class='num-"+ count +"'>" 
           + record.rank + "</td><td>" 
           + record.user + "</td><td>" 
           + record.score + "</td><td>" 
@@ -38,6 +38,14 @@ $(function(){
       $(htmlRecord).appendTo('tbody').hide().show(2000);  
       count++;
     }
+
+    $('.record').mouseenter(function () {
+        $(this).addClass('record-focus');
+    });
+
+    $('.record').mouseleave(function () {
+        $(this).removeClass('record-focus');
+    });
   }
   
   $(window).bind("load", function(){

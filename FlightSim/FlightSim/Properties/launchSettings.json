@@ -12,7 +12,7 @@
     "FlightSim": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "scoreboardlisting",
+      "launchUrl": "scoreboard.html",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

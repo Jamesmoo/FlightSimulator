@@ -1,7 +1,7 @@
 $(function(){
   function getLeaderboard(){
     $.ajax({
-        url : "http://127.0.0.1:5000/getlist",
+        url: "https://localhost:5001/scoreboardlisting",
         type : 'GET',
         dataType : 'json',
         success : function(data) {              
@@ -15,12 +15,12 @@ $(function(){
     
   function loadResults(data){
     var count = 1;
-    for(const record of data.results){
+    for(const record of data){
       var htmlRecord = "";
 
       if(record.rank === 1){
         htmlRecord = "<tr><td class='winner record-"+ count +"'>" 
-          + "<img src='./static/images/star.png' class='star-align'>"
+          + "<img src='./images/star.png' class='star-align'>"
           + record.rank 
           + "</td><td>" 
           + record.user + "</td><td>" 

@@ -109,7 +109,7 @@ x-sign {
 
 }
 
-.scoreboardTable tr:nth-child(even)
+.scoreboardTable tr.record:nth-child(even)
 {
 	/*background-color:#515A5A ;*/
 	/*background-color:#1C2833;*/
@@ -118,7 +118,7 @@ x-sign {
 	border:5px solid transparent;
 }
 
-.scoreboardTable tr:nth-child(odd)
+.scoreboardTable tr.record:nth-child(odd)
 {
 	background-color:#000;
 	border:5px solid transparent;

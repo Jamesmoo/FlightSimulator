@@ -32,6 +32,7 @@ body {
   
 }
 
+/*
 .tinted-image {
   background-image: 
     linear-gradient(
@@ -42,6 +43,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
+*/
 
 
 .scoreboard{
@@ -53,6 +55,8 @@ body {
     height:600px;
     /*width:1500px;*/
     width:100vw;
+
+    overflow: overlay;
 }
 
 x-sign {
@@ -166,4 +170,31 @@ x-sign {
 
 .hidden {
     display: none !important;
+}
+
+.fullscreen-bg {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%; 
+      overflow: hidden;
+    z-index: -1000;
+}
+
+.fullscreen-bg__video {
+ min-width: 100%; 
+  min-height: 100%; 
+
+  /* Setting width & height to auto prevents the browser from stretching or squishing the video */
+  width: auto;
+  height: auto;
+
+  /* Center the video */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+
+  z-index: -1000;
 }

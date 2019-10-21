@@ -18,7 +18,7 @@ namespace FlightSim.Controllers
         public ScoreboardListing[] Get()
         {
             Random rnd = new Random();
-            string[] userNames = {"", "Maverick", "Goose", "Jester", "Merlin", "Snake", "Big Boss", "Rambo", "Terminator", "T-800", "Link", "Mario", "John Wick", "Neo", "Slayer" };
+            string[] userNames = {"", "Walter White" ,"Maverick", "Goose", "Jester", "Merlin", "Snake", "Big Boss", "Rambo", "Terminator", "T-800", "Link", "Mario", "John Wick", "Neo", "Slayer"};
             
             return Enumerable.Range(1, 14).Select(index => new ScoreboardListing
             {

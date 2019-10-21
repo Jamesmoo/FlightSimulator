@@ -39,9 +39,11 @@ $(function(){
             /* hiden stats panel */
             htmlRecord += "<tr class='record-stats num-" + count + "'>" +
                 "<td class='stats' style='display:none;' colspan='4' >" +
+                "<div class='stats-style'>" + 
                 "Kills: " + record.userScore.kills +
                 " - Deaths: " + record.userScore.deaths +
-                " - Assists: " + record.userScore.assists + 
+                " - Assists: " + record.userScore.assists +
+                "</div>" + 
                 "</td ></tr > ";
             
             $(htmlRecord).appendTo('tbody').hide().show(2000);  

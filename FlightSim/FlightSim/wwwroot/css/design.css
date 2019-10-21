@@ -52,7 +52,7 @@ body {
     0px 0px 4px #30ff1f,
     0px 0px 8px #20ff1b,
     0px 0px 16px #10ff18;*/
-    height:600px;
+    height:590px;
     /*width:1500px;*/
     width:100vw;
 
@@ -60,6 +60,9 @@ body {
 }
 
 x-sign {
+    overflow: hidden;
+    position: fixed;
+    z-index: 100;
   --interval: 1s;
   display: block;
   text-shadow: 
@@ -79,6 +82,8 @@ x-sign {
       margin-left: 20px;
     margin-right: 20px;
     padding-left: 68px;
+
+    
 }
 
 .scoreboardTable{
@@ -90,7 +95,8 @@ x-sign {
 */
  	border-spacing:0 8px;  
  	padding-left:70px;
- 	padding-right:70px; 
+ 	padding-right:70px;
+    margin-top: 100px;
 }
 
 .scoreboardTable tr{
@@ -198,3 +204,13 @@ x-sign {
 
   z-index: -1000;
 }
+
+/*
+#tableHeaders {
+    width:100vw;
+    position: fixed;
+    overflow: hidden;
+    z-index: 100;
+    margin-top: -5px;
+}
+    */

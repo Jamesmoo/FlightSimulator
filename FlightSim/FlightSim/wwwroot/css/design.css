@@ -170,8 +170,14 @@ x-sign {
 	border:5px solid transparent;
 }
 
-.record-stats {
-    background-color: gray; 
+.stats-style {
+    background-color: gray;
+    height: 50px;
+    padding-top: 12px;
+    margin-top: -17px;
+    border-left: 2px solid yellow;
+    border-bottom: 2px solid yellow;
+    border-right: 2px solid yellow;
 }
 
 .hidden {

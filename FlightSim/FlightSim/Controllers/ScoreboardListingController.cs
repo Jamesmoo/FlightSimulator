@@ -17,16 +17,16 @@ namespace FlightSim.Controllers
         [HttpGet]
         public ScoreboardListing[] Get()
         {
-            string[] userNames = {"", "Maverick", "Goose", "Jester", "Merlin","Snake","Big Boss", "Rambo", "Terminator" };
-            int[] scores = { 0, 5000, 4000, 3000, 2000, 1000, 900, 800, 700 };
-            double[] times = { 0, 100.00, 200.00, 300.00, 400.00, 500.00, 300.00, 300.00, 250.00 };
-
-            return Enumerable.Range(1, 7).Select(index => new ScoreboardListing
+            Random rnd = new Random();
+            string[] userNames = {"", "Maverick", "Goose", "Jester", "Merlin", "Snake", "Big Boss", "Rambo", "Terminator", "T-800", "Link", "Mario", "John Wick", "Neo", "Slayer" };
+            
+            return Enumerable.Range(1, 14).Select(index => new ScoreboardListing
             {
+                userScore = new UserScore(rnd.Next(0,100), rnd.Next(0,100), rnd.Next(0,100)),
                 rank = index,
                 user = userNames[index],
-                score = scores[index],
-                time = times[index]
+                score = 5000 - (index * 100),
+                time = rnd.Next(100, 2000)
             }).ToArray();
         }
     }

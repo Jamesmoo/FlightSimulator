@@ -109,20 +109,7 @@ x-sign {
 
 }
 
-.scoreboardTable tr.record:nth-child(even)
-{
-	/*background-color:#515A5A ;*/
-	/*background-color:#1C2833;*/
 
-	background-color:#1a315e;
-	border:5px solid transparent;
-}
-
-.scoreboardTable tr.record:nth-child(odd)
-{
-	background-color:#000;
-	border:5px solid transparent;
-}
 
 .winner{
 	font-size:40px;
@@ -159,4 +146,24 @@ x-sign {
     -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+.scoreboardTable .record.even
+{
+	background-color:#1a315e;
+	border:5px solid transparent;
+}
+
+.scoreboardTable .record.odd
+{
+	background-color:#000;
+	border:5px solid transparent;
+}
+
+.record-stats {
+    background-color: gray; 
+}
+
+.hidden {
+    display: none !important;
 }

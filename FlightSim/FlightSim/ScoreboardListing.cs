@@ -11,5 +11,7 @@ namespace FlightSim
         public int score { get; set; }
 
         public double time { get; set; }
+
+        public UserScore userScore {get; set;}
     }
 }

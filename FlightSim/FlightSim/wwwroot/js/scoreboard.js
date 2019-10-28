@@ -5,7 +5,7 @@ $(function () {
 
     window.getLeaderboard = function getLeaderboard(eventId) {
         $.ajax({
-            url: 'http://localhost:5001/ScoreByEventID.json',
+            url: 'https://localhost:5001/ScoreByEventID.json',
             type : 'GET',
             dataType : 'json',
             success : function(data) {              
@@ -88,11 +88,13 @@ $(function () {
   
     };
     
-    function loadResults(data){
+    function loadResults(data) {
+        
         var count = 1;
         $('tbody').empty();
-        for (const record of data) {
-
+        console.log(data);
+        for (const record of data.results) {
+            console.log(record, "THIS IS A RECORD");
            
             var htmlRecord = "";
             var classStyle = "even";
@@ -109,10 +111,10 @@ $(function () {
                 htmlRecord += "<tr class='record " + classStyle + " num-" + count + "'" + " onclick = viewStats(\'" + record.UserID + "\')" + "><td>";
             }
 
-            htmlRecord += record.Rank + "</td>";
-            htmlRecord += "<td>" + record.Callsign + "</td>";
-            htmlRecord += "<td>" + record.Score + "</td>";
-            htmlRecord += "<td>" + record.Delta_TimeAtTOT + "</td></tr>"; //close user
+            htmlRecord += record.UserScoreVM.Rank + "</td>";
+            htmlRecord += "<td>" + record.UserScoreVM.Callsign + "</td>";
+            htmlRecord += "<td>" + record.UserScoreVM.Score + "</td>";
+            htmlRecord += "<td>" + record.UserScoreVM.Delta_TimeAtTOT + "</td></tr>"; //close user
 
             /* hiden stats panel */
          /* htmlRecord += "<tr class='record-stats num-" + count + "'>" +

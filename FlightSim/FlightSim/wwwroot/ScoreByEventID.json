@@ -1,0 +1,14 @@
+{
+   "UserScoreVM": {
+      "Attempt": {
+         "@nil": "true"
+      },
+      "Callsign": "ELMO",
+      "Delta_TimeAtTOT": "N/A",
+      "EventID": "31",
+      "EventName": "30PointTest",
+      "Rank": "1",
+      "Score": "0",
+      "UserID": "1"
+   }
+}

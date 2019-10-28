@@ -9,7 +9,7 @@ $(function () {
     function getAttemptsByEventUser(eventId, userId) {
         $.ajax({
             /*url: "https://192.168.100.100:" + globalPortId + "/api/GetAttemptsByEventUser?EventID=" + eventId + "&UserID=" + userId,*/
-            url: '/GetAttemptsByEventUser',
+            url: 'http://localhost:5001/GetAttemptsByEventUser.json',
             type: 'GET',
             dataType: 'json',
             success: function (data) {

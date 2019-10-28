@@ -5,7 +5,7 @@ $(function () {
 
     window.getLeaderboard = function getLeaderboard(eventId) {
         $.ajax({
-            url: './ScoreByEventID.json',
+            url: 'http://localhost:5001/ScoreByEventID.json',
             type : 'GET',
             dataType : 'json',
             success : function(data) {              
@@ -19,11 +19,11 @@ $(function () {
 
     function getEventListing() {
         $.ajax({
-            url:'./GetAllEvents.json',
+            url:'https://localhost:5001/GetAllEvents.json',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
-                loadEvents(data);
+                loadEvents(data.EventVM);
             },
             error: function (request, error) {
                 console.error("Could not Retrieve events");
@@ -55,7 +55,7 @@ $(function () {
     function loadEvents(events) {
         var eventList = "";
 
-
+        
         for (const record of events) {
             eventList += "<option class='event' value='" + record.Event_ID + "' label='"  + record.Event_Name.replace("'", "") + "'/>"; 
         }

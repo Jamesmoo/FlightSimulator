@@ -9,12 +9,12 @@ $(function () {
     function getAttemptsByEventUser(eventId, userId) {
         $.ajax({
             /*url: "https://192.168.100.100:" + globalPortId + "/api/GetAttemptsByEventUser?EventID=" + eventId + "&UserID=" + userId,*/
-            url: 'http://localhost:5001/GetAttemptsByEventUser.json',
+            url: 'https://localhost:5001/GetAttemptsByEventUser.json',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
                 attempts = data;
-                setPlayerAttemptList(attempts);
+                setPlayerAttemptList();
                 renderAttemptButtons();
 
             },
@@ -26,11 +26,12 @@ $(function () {
 
     window.setPlayerAttemptList = function setPlayerAttemptList() {
         if (attempts) {
+            console.log(attempts, "ATTEMPTS");
+            //attempts.AttemptVM.userVM.Callsign
+            var callsign = attempts.attemps[0].AttemptVM.userVM.Callsign
             
-         
-            var callsign = attempts[0].userVM.Callsign;
             document.getElementById("playerTitle").innerHTML = callsign;
-            loadPlayerStats(attempts[currentAttempt]);
+            loadPlayerStats(attempts.attemps[currentAttempt]);
         }
     }
 
@@ -108,6 +109,7 @@ $(function () {
         var attempList = "";
         var totalStats = ""; 
         console.log(attempt);
+        
 
         $('#playerTotalsBody').empty();
         $('#tpTableBody').empty();
@@ -122,8 +124,10 @@ $(function () {
         }
 
         var count = 1;
-       
-        for (const record of attempt.TPScores) {
+
+        console.log(attempt, "TPSCORES");
+        //AttemptVM.TPScores.TPScoreVM
+        for (const record of attempt.AttemptVM.TPScores.TPScoreVM) {
 
            
 

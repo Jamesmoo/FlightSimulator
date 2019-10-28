@@ -114,11 +114,13 @@ $(function () {
         $('#playerTotalsBody').empty();
         $('#tpTableBody').empty();
 
-        if (attempt.TPScores && attempt.TPScores.length > 0) {
+
+        if (attempt.AttemptVM.TPScores.TPScoreVM && attempt.AttemptVM.TPScores.TPScoreVM.length > 0) {
+            var len = attempt.AttemptVM.TPScores.TPScoreVM.length;
             totalStats += "<tr>"
-            totalStats += "<td>" + attempt.TPScores[attempt.TPScores.length - 1].TotalPositScore + "</td>"; 
-            totalStats += "<td>" + attempt.TPScores[attempt.TPScores.length - 1].TotalTimeScore + "</td>"; 
-            totalStats += "<td>" + attempt.TPScores[attempt.TPScores.length - 1].TotalScore + "</td>"; 
+            totalStats += "<td>" + attempt.AttemptVM.TPScores.TPScoreVM[len - 1].TotalPositScore + "</td>"; 
+            totalStats += "<td>" + attempt.AttemptVM.TPScores.TPScoreVM[len - 1].TotalTimeScore + "</td>"; 
+            totalStats += "<td>" + attempt.AttemptVM.TPScores.TPScoreVM[len - 1].TotalScore + "</td>"; 
             totalStats += "</tr>"
             $(totalStats).appendTo(document.getElementById('playerTotalsBody')).hide().show(2000);
         }

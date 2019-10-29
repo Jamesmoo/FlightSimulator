@@ -1,34 +1,60 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Chowder Leaderboard</title>
-	<!-- the reference here using ./static is for flask, when using another webservice just remove that portion of the path-->
-	<link rel="stylesheet" type="text/css" href="./css/design.css">
-	<link href='https://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet'>
-	<script src="./js/jquery-3.4.1.min.js"></script>
-	<script src="./js/scoreboard.js" defer></script>
+    <title>Chowder Leaderboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- the reference here using ./static is for flask, when using another webservice just remove that portion of the path-->
+    <link rel="stylesheet" type="text/css" href="./css/design.css">
+    <link href='https://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script src="./js/scoreboard.js" defer></script>
+
+
+
 </head>
 
 
-<body id="main-body" class="tinted-image">
+<body class="tinted-image">
     <video loop muted autoplay poster="img/videoframe.jpg" class="fullscreen-bg__video">
         <source src="./images/Clouds.webm" type="video/webm">
     </video>
 
-	<div class="scoreboard">
-	 		<x-sign>CHOWDER BOWL<p class="smallTitle">LEADERBOARD</p>
-	 			<img src="./images/airforce2.png" class="airforce"/>
-	 		</x-sign>
-	 			<div class="scoreboardBody">
-	 				<table class="scoreboardTable">
-	 					<tr id="tableHeaders">
-	 						<th>Rank</th>
-	 						<th>User</th>	
-	 						<th>Score</th>
-	 						<th>Time</th>
-	 					</tr>
-	 				</table>
-	 			</div>
-		</div>	
+    <div>
+        <label id="selectEvent">Select Event:</label>
+        <select id="eventDropdown" onchange="selectEvent()"></select>
+    </div>
+
+
+    <div class="scoreboard">
+        <x-sign>
+            <div id="playerHeader">
+                <label id="eventTitle" class="largeTitle"></label>
+                <p class="smallTitle">stats</p>
+            </div>
+
+            <img src="./images/airforce2.png" class="airforce" />
+        </x-sign>
+
+        <div class="stickyHeader topMargin">
+            <table class="scoreboardTable" class="statsInfo">
+                <thead>
+                    <tr id="tableHeaders">
+                        <th>Rank</th>
+                        <th>User</th>
+                        <th>Score</th>
+                        <th><div>&#916;Time </div><div> &#64;TGT</div></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
 </body>
+
+
 </html>

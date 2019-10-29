@@ -1,0 +1,46 @@
+{
+  "results": [
+    {
+      "UserScoreVM": {
+        "Attempt": {
+          "@nil": "true"
+        },
+        "Callsign": "ELMO",
+        "Delta_TimeAtTOT": "N/A",
+        "EventID": "31",
+        "EventName": "30PointTest",
+        "Rank": "1",
+        "Score": "0",
+        "UserID": "1"
+      }
+    },
+    {
+      "UserScoreVM": {
+        "Attempt": {
+          "@nil": "true"
+        },
+        "Callsign": "Maverick",
+        "Delta_TimeAtTOT": "N/A",
+        "EventID": "31",
+        "EventName": "30PointTest",
+        "Rank": "2",
+        "Score": "0",
+        "UserID": "2"
+      }
+    },
+    {
+      "UserScoreVM": {
+        "Attempt": {
+          "@nil": "true"
+        },
+        "Callsign": "IceManRyan",
+        "Delta_TimeAtTOT": "N/A",
+        "EventID": "31",
+        "EventName": "30PointTest",
+        "Rank": "3",
+        "Score": "0",
+        "UserID": "3"
+      }
+    }
+  ]
+}

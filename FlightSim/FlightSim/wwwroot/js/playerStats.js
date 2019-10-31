@@ -27,10 +27,10 @@ $(function () {
         if (attempts) {
             //console.log(attempts, "ATTEMPTS");
             //attempts.AttemptVM.userVM.Callsign
-            var callsign = attempts.attemps[0].AttemptVM.userVM.Callsign
+            var callsign = attempts[0].AttemptVM.userVM.Callsign
             
             document.getElementById("playerTitle").innerHTML = callsign;
-            loadPlayerStats(attempts.attemps[currentAttempt]);
+            loadPlayerStats(attempts[currentAttempt]);
         }
     }
 
@@ -113,12 +113,12 @@ $(function () {
         $('#tpTableBody').empty();
 
 
-        if (attempt.AttemptVM.TPScores.TPScoreVM && attempt.AttemptVM.TPScores.TPScoreVM.length > 0) {
-            var len = attempt.AttemptVM.TPScores.TPScoreVM.length;
+        if (attempt.AttemptVM.TPScores && attempt.AttemptVM.TPScores.length > 0) {
+            var len = attempt.AttemptVM.TPScores.length;
             totalStats += "<tr>"
-            totalStats += "<td class='count'>" + attempt.AttemptVM.TPScores.TPScoreVM[len - 1].TotalPositScore + "</td>"; 
-            totalStats += "<td class='count'>" + attempt.AttemptVM.TPScores.TPScoreVM[len - 1].TotalTimeScore + "</td>"; 
-            totalStats += "<td class='count'>" + attempt.AttemptVM.TPScores.TPScoreVM[len - 1].TotalScore + "</td>"; 
+            totalStats += "<td class='count'>" + attempt.AttemptVM.TPScores[len - 1].TotalPositScore + "</td>"; 
+            totalStats += "<td class='count'>" + attempt.AttemptVM.TPScores[len - 1].TotalTimeScore + "</td>"; 
+            totalStats += "<td class='count'>" + attempt.AttemptVM.TPScores[len - 1].TotalScore + "</td>"; 
             totalStats += "</tr>"
             $(totalStats).appendTo(document.getElementById('playerTotalsBody')).hide().show(2000);
         }
@@ -141,7 +141,7 @@ $(function () {
 
         console.log(attempt, "TPSCORES");
         //AttemptVM.TPScores.TPScoreVM
-        for (const record of attempt.AttemptVM.TPScores.TPScoreVM) {
+        for (const record of attempt.AttemptVM.TPScores) {
 
            
 

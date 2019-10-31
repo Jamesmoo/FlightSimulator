@@ -93,7 +93,7 @@ $(function () {
         var count = 1;
         $('tbody').empty();
         console.log(data);
-        for (const record of data.results) {
+        for (const record of data) {
             console.log(record, "THIS IS A RECORD");
            
             var htmlRecord = "";

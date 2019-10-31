@@ -417,10 +417,13 @@ html > body thead.tableHeader {
     width: auto;
     height: auto;
     /* Center the video */
-    position: absolute;
-    top: 50%;
+    position: fixed;
+    /*top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);*/
+    top:0; 
+    left:0;
+
     z-index: -1000;
 }
 

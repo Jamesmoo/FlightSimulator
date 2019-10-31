@@ -103,8 +103,9 @@ $(function () {
                 classStyle = "odd";
             }
 
-
-            if (record.rank === 1) {
+            console.log("rank" + record.UserScoreVM.Rank);
+            //if (record.Rank === 1) {
+            if (record.UserScoreVM.Rank == 1) {
                 htmlRecord += "<tr class='record winner " + classStyle + " num-" + count + "'" + " onclick = viewStats(\'" + record.UserID + "\')" + ">"; //open user
                 htmlRecord += "<td><img src='./images/star.png' class='star-align'>";
             } else {

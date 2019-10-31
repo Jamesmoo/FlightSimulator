@@ -4,8 +4,6 @@ $(function () {
     var globalPortId = 45458; 
     var currentAttempt = 0; 
 
-   
-
     function getAttemptsByEventUser(eventId, userId) {
         $.ajax({
             /*url: "https://192.168.100.100:" + globalPortId + "/api/GetAttemptsByEventUser?EventID=" + eventId + "&UserID=" + userId,*/
@@ -26,7 +24,7 @@ $(function () {
 
     window.setPlayerAttemptList = function setPlayerAttemptList() {
         if (attempts) {
-            console.log(attempts, "ATTEMPTS");
+            //console.log(attempts, "ATTEMPTS");
             //attempts.AttemptVM.userVM.Callsign
             var callsign = attempts.attemps[0].AttemptVM.userVM.Callsign
             
@@ -108,8 +106,7 @@ $(function () {
     function loadPlayerStats(attempt) {
         var attempList = "";
         var totalStats = ""; 
-        console.log(attempt);
-        
+        //console.log(attempt);
 
         $('#playerTotalsBody').empty();
         $('#tpTableBody').empty();
@@ -118,12 +115,26 @@ $(function () {
         if (attempt.AttemptVM.TPScores.TPScoreVM && attempt.AttemptVM.TPScores.TPScoreVM.length > 0) {
             var len = attempt.AttemptVM.TPScores.TPScoreVM.length;
             totalStats += "<tr>"
-            totalStats += "<td>" + attempt.AttemptVM.TPScores.TPScoreVM[len - 1].TotalPositScore + "</td>"; 
-            totalStats += "<td>" + attempt.AttemptVM.TPScores.TPScoreVM[len - 1].TotalTimeScore + "</td>"; 
-            totalStats += "<td>" + attempt.AttemptVM.TPScores.TPScoreVM[len - 1].TotalScore + "</td>"; 
+            totalStats += "<td class='count'>" + attempt.AttemptVM.TPScores.TPScoreVM[len - 1].TotalPositScore + "</td>"; 
+            totalStats += "<td class='count'>" + attempt.AttemptVM.TPScores.TPScoreVM[len - 1].TotalTimeScore + "</td>"; 
+            totalStats += "<td class='count'>" + attempt.AttemptVM.TPScores.TPScoreVM[len - 1].TotalScore + "</td>"; 
             totalStats += "</tr>"
             $(totalStats).appendTo(document.getElementById('playerTotalsBody')).hide().show(2000);
         }
+
+        $('.count').each(function () {
+            $(this).prop('Counter', 0).animate({
+                Counter: $(this).text()
+            }, {
+                duration: 2500,
+                easing: 'swing',
+                step: function (now) {
+                    $(this).text(Math.ceil(now));
+                }
+            });
+        });
+
+
 
         var count = 1;
 
@@ -142,13 +153,13 @@ $(function () {
 
             htmlRecord += "<tr class='record " + classStyle + " num-" + count + "' onmouseover = 'playSound()' onmouseout='stopSound()'><td>" + record.TP + "</td>";
             htmlRecord += "<td>" + record.TP_Type + "</td>";
-            htmlRecord += "<td> <p style='font-size:40px; display:inline'>" + record.PositionScore + "</p>" + " <p style='display:inline;'> out of " + record.MaxPositionScore + "</p></td>";
-            htmlRecord += "<td>" + record.TimingScore + " out of  " + record.MaxTimingScore + "</td>";
+            htmlRecord += "<td> <p class='scoreValue'>" + record.PositionScore + "</p>" + " <p style='display:inline;'> / " + record.MaxPositionScore + "</p></td>";
+            htmlRecord += "<td> <p class='scoreValue'>" + record.TimingScore +"</p>" + " <p style='display:inline;'> / " + record.MaxTimingScore + "</td>";
             htmlRecord += "<td>" + record.Delta_TimeAtTP + "</td>";
             htmlRecord += "<td>" + record.TimeArrivedAtTP + "</td>";
             htmlRecord += "<td>" + record.IdealTimeAtTP + "</td></tr>"; //close user
 
-            console.log(htmlRecord);
+            //console.log(htmlRecord);
 
            
             $(htmlRecord).appendTo(document.getElementById('tpTableBody')).hide().show(2000);

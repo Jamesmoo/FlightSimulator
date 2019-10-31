@@ -1,5 +1,4 @@
-{
-  "attemps": [
+[
     {
       "AttemptVM": {
         "Attempt_ID": "16",
@@ -17,9 +16,8 @@
         "Score_Viper": {
           "@nil": "true"
         },
-        "TPScores": {
-          "TPScoreVM": [
-            {
+        "TPScores": [
+          {
               "AttemptID": "16",
               "Delta_TimeAtTP": "+ 02:13",
               "IdealTimeAtTP": "5:53:20 PM",
@@ -139,8 +137,7 @@
               "TotalScore": "2916",
               "TotalTimeScore": "1116"
             }
-          ]
-        },
+          ],
         "TimeOnTarget": "2019-10-01T18:04:15",
         "User_ID": "2",
         "Viper_Maneuvers": {
@@ -169,4 +166,3 @@
       }
     }
   ]
-}

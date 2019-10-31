@@ -1,10 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\ATTEMPTS3.xml" />
+    <None Include="wwwroot\AttemptsList.xml" />
+    <None Include="wwwroot\AttemptsList2.xml" />
   </ItemGroup>
 
 </Project>

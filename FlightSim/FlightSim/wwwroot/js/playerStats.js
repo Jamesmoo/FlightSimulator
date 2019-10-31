@@ -19,6 +19,7 @@ $(function () {
 
             },
             error: function (request, error) {
+                debugger;
                 console.error("Could not Retrieve events");
             }
         });

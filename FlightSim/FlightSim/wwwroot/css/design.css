@@ -34,6 +34,8 @@ body {
     align-items: center;
     align-content: center;
     justify-content: center;
+  
+    overflow-y:hidden;
 }
 
 
@@ -44,7 +46,7 @@ body {
 }
 
 .scoreboard{
-    height:80vh;
+    height:90vh;
     width:100vw;
 }
 
@@ -246,7 +248,7 @@ html > body thead.tableHeader {
 }
     .stickyHeader {
         overflow-y: auto;
-        height: 400px;
+        height: 550px;
         font-size: .5em;
       /*  width: 90%;*/
         padding-left: 40px;
@@ -293,13 +295,13 @@ html > body thead.tableHeader {
 #playerHeader {
     position: absolute;
     right: -300px;
-    animation: slide 1s forwards;
+    animation: slide 2s forwards;
 }
 
 #eventHeader {
     position: absolute;
     right: -300px;
-    animation: slide 1s forwards;
+    animation: slide 2s forwards;
 }
 
 @keyframes slide {
@@ -420,4 +422,14 @@ html > body thead.tableHeader {
     left: 50%;
     transform: translate(-50%,-50%);
     z-index: -1000;
+}
+
+.scoreValue {
+    font-size: 40px;
+    display: inline; 
+    font-weight:900; 
+}
+
+.eventSelection{
+    margin-top:20px;
 }

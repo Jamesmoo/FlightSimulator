@@ -34,6 +34,7 @@ body {
     align-items: center;
     align-content: center;
     justify-content: center;
+    overflow-y: hidden;
 }
 
 
@@ -44,7 +45,7 @@ body {
 }
 
 .scoreboard{
-    height:100vh;
+    height:95vh;
     width:100vw;
 }
 
@@ -61,7 +62,7 @@ x-sign {
   background: rgb(2,0,36);
   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
   padding: 10px;
-  font-size: 1.5em;
+  font-size: 1.0em;
   letter-spacing:.05em;
   text-align:left;
   margin-left: 20px;
@@ -101,7 +102,7 @@ x-sign {
 }
 
 .scoreboardTable th{
-	font-size:1.2em;
+	font-size:.9em;
 	background-color:#424949;
 	padding:10px;
 }
@@ -219,14 +220,14 @@ html > body thead.tableHeader {
 
 .playerTotals th {
     font-weight: bold;
-    font-size: .6em;
+    font-size: .5em;
     background-color: rgba(9,9,121,1);
     color: #fff;
     border-top: 1px solid mediumblue
 }
 
 .playerTotals td {
-    font-size: 1.2em;
+    font-size: 1.0em;
     font-weight: bold;
     background-color: rgba(9,9,121,.60);
     color: #fff;
@@ -246,7 +247,7 @@ html > body thead.tableHeader {
 }
     .stickyHeader {
         overflow-y: auto;
-        height: 600px;
+        height: 65vh;
         font-size: .5em;
       /*  width: 90%;*/
         padding-left: 40px;

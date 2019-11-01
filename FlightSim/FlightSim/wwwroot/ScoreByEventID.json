@@ -110,5 +110,33 @@
       "Score": "400",
       "UserID": "2"
     }
+  },
+  {
+    "UserScoreVM": {
+      "Attempt": {
+        "@nil": "true"
+      },
+      "Callsign": "Hank",
+      "Delta_TimeAtTOT": "N/A",
+      "EventID": "31",
+      "EventName": "30PointTest",
+      "Rank": "9",
+      "Score": "400",
+      "UserID": "2"
+    }
+  },
+  {
+    "UserScoreVM": {
+      "Attempt": {
+        "@nil": "true"
+      },
+      "Callsign": "Bobby",
+      "Delta_TimeAtTOT": "N/A",
+      "EventID": "31",
+      "EventName": "30PointTest",
+      "Rank": "10",
+      "Score": "400",
+      "UserID": "2"
+    }
   }
 ]

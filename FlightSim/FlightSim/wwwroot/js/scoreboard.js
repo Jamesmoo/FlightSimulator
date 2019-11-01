@@ -5,6 +5,7 @@ $(function () {
 
     window.getLeaderboard = function getLeaderboard(eventId) {
         $.ajax({
+            /*url: 'https://192.168.100.100:' + globalPortId + '/api/Score?eventID=' + eventId, */
             url: 'https://localhost:5001/ScoreByEventID.json',
             type : 'GET',
             dataType : 'json',
@@ -19,6 +20,7 @@ $(function () {
 
     function getEventListing() {
         $.ajax({
+            /*url: 'https://192.168.100.100:' + globalPortId + '/api/GetAllEvents",',*/
             url:'https://localhost:5001/GetAllEvents.json',
             type: 'GET',
             dataType: 'json',
@@ -31,24 +33,9 @@ $(function () {
         });
     }
 
-    function getUserScoresByEventId() {
-        $.ajax({
-            url: './ScoreByEventID.json',
-            type: 'GET',
-            dataType: 'json',
-            success: function (data) {
-                loadEvents(data);
-            },
-            error: function (request, error) {
-                console.error("Could not Retrieve events");
-            }
-        });
-    }
-
     window.viewStats = function viewStats(user) {
         this.localStorage.setItem("userId", user);
         this.localStorage.setItem("eventId", globalEventId);
-        //getAttemptsByEventUser(globalEventId, user);
         window.location.href = "playerStats.html";
     }; 
 

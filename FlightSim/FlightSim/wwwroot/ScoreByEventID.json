@@ -138,5 +138,146 @@
       "Score": "400",
       "UserID": "2"
     }
-  }
+  },
+    {
+      "UserScoreVM": {
+        "Attempt": {
+          "@nil": "true"
+        },
+        "Callsign": "Kim",
+        "Delta_TimeAtTOT": "N/A",
+        "EventID": "31",
+        "EventName": "30PointTest",
+        "Rank": "2",
+        "Score": "0",
+        "UserID": "12"
+      }
+    },
+    {
+      "UserScoreVM": {
+        "Attempt": {
+          "@nil": "true"
+        },
+        "Callsign": "Nick",
+        "Delta_TimeAtTOT": "N/A",
+        "EventID": "31",
+        "EventName": "30PointTest",
+        "Rank": "2",
+        "Score": "0",
+        "UserID": "2"
+      }
+    },
+    {
+      "UserScoreVM": {
+        "Attempt": {
+          "@nil": "true"
+        },
+        "Callsign": "Anthony",
+        "Delta_TimeAtTOT": "N/A",
+        "EventID": "31",
+        "EventName": "30PointTest",
+        "Rank": "2",
+        "Score": "0",
+        "UserID": "2"
+      }
+    },
+    {
+      "UserScoreVM": {
+        "Attempt": {
+          "@nil": "true"
+        },
+        "Callsign": "Thomas The Test Train",
+        "Delta_TimeAtTOT": "N/A",
+        "EventID": "31",
+        "EventName": "30PointTest",
+        "Rank": "2",
+        "Score": "0",
+        "UserID": "2"
+      }
+    },
+    {
+      "UserScoreVM": {
+        "Attempt": {
+          "@nil": "true"
+        },
+        "Callsign": "Andrew",
+        "Delta_TimeAtTOT": "N/A",
+        "EventID": "31",
+        "EventName": "30PointTest",
+        "Rank": "2",
+        "Score": "0",
+        "UserID": "2"
+      }
+    },
+    {
+      "UserScoreVM": {
+        "Attempt": {
+          "@nil": "true"
+        },
+        "Callsign": "James",
+        "Delta_TimeAtTOT": "N/A",
+        "EventID": "31",
+        "EventName": "30PointTest",
+        "Rank": "2",
+        "Score": "0",
+        "UserID": "2"
+      }
+    },
+    {
+      "UserScoreVM": {
+        "Attempt": {
+          "@nil": "true"
+        },
+        "Callsign": "Mitch",
+        "Delta_TimeAtTOT": "N/A",
+        "EventID": "31",
+        "EventName": "30PointTest",
+        "Rank": "2",
+        "Score": "0",
+        "UserID": "2"
+      }
+    },
+    {
+      "UserScoreVM": {
+        "Attempt": {
+          "@nil": "true"
+        },
+        "Callsign": "Peggy",
+        "Delta_TimeAtTOT": "N/A",
+        "EventID": "31",
+        "EventName": "30PointTest",
+        "Rank": "2",
+        "Score": "0",
+        "UserID": "2"
+      }
+    },
+    {
+      "UserScoreVM": {
+        "Attempt": {
+          "@nil": "true"
+        },
+        "Callsign": "Colby",
+        "Delta_TimeAtTOT": "N/A",
+        "EventID": "31",
+        "EventName": "30PointTest",
+        "Rank": "2",
+        "Score": "0",
+        "UserID": "2"
+      }
+    },
+    {
+      "UserScoreVM": {
+        "Attempt": {
+          "@nil": "true"
+        },
+        "Callsign": "Braden",
+        "Delta_TimeAtTOT": "N/A",
+        "EventID": "31",
+        "EventName": "30PointTest",
+        "Rank": "2",
+        "Score": "0",
+        "UserID": "2"
+      }
+    }
+  
 ]

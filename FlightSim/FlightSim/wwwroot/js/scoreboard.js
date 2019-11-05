@@ -3,14 +3,15 @@ $(function () {
     var globalEventId;
     var globalPortId = 45458; 
 
-    window.getLeaderboard = function getLeaderboard(eventId) {
+    window.getLeaderboard = function getLeaderboard(eventId, userId) {
         $.ajax({
             /*url: 'https://192.168.100.100:' + globalPortId + '/api/Score?eventID=' + eventId, */
             url: 'https://localhost:5001/ScoreByEventID.json',
             type : 'GET',
             dataType : 'json',
             success : function(data) {              
-                loadResults(data);
+                loadResults(data, userId);
+                getEventListing();
             },
             error : function(request, error){
                 console.error("Could not Retrieve Leaderboard scores");
@@ -68,20 +69,15 @@ $(function () {
                 $stats.slideDown(100, function () { });
             }*/
         });
-
-        getLeaderboard(events[0].Event_ID);
-        globalEventId = events[0].Event_ID;
-        document.getElementById('eventTitle').innerHTML = (events[0].Event_Name); 
-  
     };
     
-    function loadResults(data) {
+    function loadResults(data, userId) {
         
         var count = 1;
+        var currentCallsign;
         $('tbody').empty();
-        console.log(data);
+        document.getElementById('eventTitle').innerHTML = (data[0].UserScoreVM.EventName); 
         for (const record of data) {
-            console.log(record, "THIS IS A RECORD");
            
             var htmlRecord = "";
             var classStyle = "even";
@@ -124,14 +120,13 @@ $(function () {
             count++;
 
             console.log(record); 
+            if (userId && record.UserScoreVM.UserID == userId) {
+                currentCallsign = record.UserScoreVM.Callsign;
+            }
+            
+
+
         }
-
-        $('.record').mouseenter(function () {
-    
-        });
-
-        $('.record').mouseleave(function () {
-        });
 
         $('.record').on('click', function (event) {
             var $recordStats = $(".record-stats.num-" + $(this).attr('class').split('num-')[1]);
@@ -152,6 +147,13 @@ $(function () {
             }
         });
 
+        if (userId) {
+            var rowPos = $("#scoreboardTable tr:contains(" + currentCallsign + ")").position();
+            var rowOffset = Number(rowPos.top) - 75;
+            console.log(typeof row);
+            $('#tableContainer').scrollTop(rowOffset);
+        }
+
     }
 
     window.selectEvent = function selectEvent() {
@@ -163,12 +165,15 @@ $(function () {
 
     }
 
-
-
- 
   
     $(window).bind("load", function () {
-        getEventListing();
-      //  getLeaderboard();
+        var vars = {};
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+            vars[key] = value;
+        });
+        globalEventId = vars.eventId;
+        getLeaderboard(globalEventId, vars.userId);
+
+
     });
 });

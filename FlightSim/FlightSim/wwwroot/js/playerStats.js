@@ -25,9 +25,15 @@ $(function () {
 
     window.setPlayerAttemptList = function setPlayerAttemptList() {
         if (attempts) {
-            //console.log(attempts, "ATTEMPTS");
-            //attempts.AttemptVM.userVM.Callsign
+            //Sort function to order by 
+            attempts.sort(function (a, b) {
+                return new Date(b.AttemptVM.Date_Created) - Date(a.AttemptVM.Date_Created);
+            });
+            //Build Attempt Title
+            var date = buildMonthDayYearDateString(attempts[0].AttemptVM.Date_Created);
+            document.getElementById('attemptNum').innerHTML = 'Attempted on: ' + date;
             var callsign = attempts[0].AttemptVM.userVM.Callsign
+            
             
             document.getElementById("playerTitle").innerHTML = callsign;
             loadPlayerStats(attempts[currentAttempt]);
@@ -102,6 +108,15 @@ $(function () {
         }
     }
 
+    function buildMonthDayYearDateString(timestamp) {
+        var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        var monthDayYear = timestamp.substring(0,10);
+        var t = new Date(monthDayYear);
+        return t.getDate() + '-' + monthNames[t.getMonth()] + '-' + t.getFullYear();
+
+    }
+
    
 
     function loadPlayerStats(attempt) {
@@ -111,6 +126,9 @@ $(function () {
 
         $('#playerTotalsBody').empty();
         $('#tpTableBody').empty();
+
+        var date = buildMonthDayYearDateString(attempts[0].AttemptVM.Date_Created);
+        document.getElementById('attemptNum').innerHTML = 'Attempted on: ' + date;
 
 
         if (attempt.AttemptVM.TPScores && attempt.AttemptVM.TPScores.length > 0) {
@@ -142,8 +160,6 @@ $(function () {
         console.log(attempt, "TPSCORES");
         //AttemptVM.TPScores.TPScoreVM
         for (const record of attempt.AttemptVM.TPScores) {
-
-           
 
             var htmlRecord = "";
             var classStyle = "even";

@@ -39,20 +39,52 @@
             <img src="./images/airforce2.png" class="airforce" />
         </x-sign>
 
-        <div id="tableContainer" class="stickyHeader topMargin">
-            <table id="scoreboardTable" class="scoreboardTable statsInfo">
-                <thead>
-                    <tr id="tableHeaders">
-                        <th>Rank</th>
-                        <th>User</th>
-                        <th>Score</th>
-                        <th><div>&#916;Time </div><div> &#64;TGT</div></th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
+
+        <div class="tabordion">
+            <section id="section1">
+                <input type="radio" name="sections" id="option1" checked>
+                <label for="option1" title="First Best Attempt">
+                    <div><img src="./images/winner-medal.png" /></div>
+                    First
+                </label>
+                <article>
+                    <div id="tableContainer" class="stickyHeader" style="width:84vw;">
+                        <table id="scoreboardTable" class="scoreboardTable statsInfo">
+                            <thead>
+                                <tr id="tableHeaders">
+                                    <th>Rank</th>
+                                    <th>User</th>
+                                    <th>Score</th>
+                                    <th><div>&#916;Time </div><div> &#64;TGT</div></th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+            <section id="section2">
+                <input type="radio" name="sections" id="option2">
+               
+                <label for="option2" title="Overall Best Attempt">
+                    <div><img src="./images/trophy.png" /></div>
+                    Best
+                </label>
+                <article>
+                </article>
+            </section>
+           
         </div>
+
+
+       
+
+
+
     </div>
+
+       
+           
 
 </body>
 

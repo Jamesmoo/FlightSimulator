@@ -251,7 +251,7 @@ html > body thead.tableHeader {
         font-size: .5em;
       /*  width: 90%;*/
         padding-left: 40px;
-        padding-right:40px;
+        /*padding-right:40px;*/
     }
 
         .stickyHeader thead th {
@@ -288,7 +288,7 @@ html > body thead.tableHeader {
 
 .statsInfo
 {
-    padding-right:40px;
+    /*padding-right:40px;*/
 }
 
 #playerHeader {
@@ -434,4 +434,88 @@ html > body thead.tableHeader {
 
 .eventSelection{
     margin-top:20px;
+}
+
+
+/*Tab styles*/
+
+.tabordion {
+    color: #333;
+    display: block;
+    margin: auto;
+    position: relative;
+    margin-top:20px;
+    margin-left:20px;
+}
+
+    .tabordion input[name="sections"] {
+        left: -9999px;
+        position: absolute;
+        top: -9999px;
+    }
+
+    .tabordion section {
+        display: block;
+    }
+
+        .tabordion section label {
+            background: #ccc;
+            cursor: pointer;
+            display: block;
+            font-size: .4em;
+            font-weight: bold;
+            padding: 15px 20px;
+            position: relative;
+            width: 80px;
+            z-index: 100;
+        }
+
+        .tabordion section article {
+            display: none;
+            left: 65px;
+            min-width: 300px;
+            padding: 0 0 0 21px;
+            position: absolute;
+            top: -4px;
+        }
+
+            .tabordion section article:after {
+                bottom: 0;
+                content: "";
+                display: block;
+                left: -229px;
+                position: absolute;
+                top: 0;
+                width: 220px;
+                z-index: 1;
+            }
+
+    .tabordion input[name="sections"]:checked + label {
+        background: rgba(9,9,121,1);
+        color: #fff;
+        font-weight:900;
+    }
+
+        .tabordion input[name="sections"]:checked + label :after {
+            content: '';
+            position: absolute;
+            left: 100%;
+            top: 50%;
+            margin-top: -13px;
+            border-left: 0;
+            border-bottom: 13px solid transparent;
+            border-top: 13px solid transparent;
+            border-left: 10px solid rgba(9,9,121,1);
+        }
+
+
+
+    .tabordion input[name="sections"]:checked ~ article {
+        display: block;
+    }
+
+#attemptNum {
+    font-weight: 900;
+    font-size: .7em;
+    font-family: 'Poppins', sans-serif;
 }

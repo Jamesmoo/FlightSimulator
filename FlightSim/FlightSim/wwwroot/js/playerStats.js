@@ -7,7 +7,7 @@ $(function () {
     function getAttemptsByEventUser(eventId, userId) {
         $.ajax({
             /*url: "https://192.168.100.100:" + globalPortId + "/api/GetAttemptsByEventUser?EventID=" + eventId + "&UserID=" + userId,*/
-            url: 'https://localhost:5001/GetAttemptsByEventUser.json',
+            url: 'http://52.222.21.67:8888/api/GetAttemptsByEventUser?EventID=' +eventId+ '&UserID=' +userId,
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -17,7 +17,6 @@ $(function () {
 
             },
             error: function (request, error) {
-                debugger;
                 console.error("Could not Retrieve events");
             }
         });
@@ -27,10 +26,10 @@ $(function () {
         if (attempts) {
             //Sort function to order by 
             attempts.sort(function (a, b) {
-                return Date(a.AttemptVM.Date_Created) - new Date(b.AttemptVM.Date_Created);
+                return Date(a.Date_Created) - new Date(b.Date_Created);
             });
 
-            var callsign = attempts[0].AttemptVM.userVM.Callsign 
+            var callsign = attempts[0].userVM.Callsign 
             document.getElementById("playerTitle").innerHTML = callsign;
             loadPlayerStats(attempts[currentAttempt]);
         }
@@ -123,16 +122,16 @@ $(function () {
         $('#tpTableBody').empty();
 
         //Build Attempt Title
-        var date = buildMonthDayYearDateString(attempt.AttemptVM.Date_Created);
+        var date = buildMonthDayYearDateString(attempt.Date_Created);
         document.getElementById('attemptNum').innerHTML = 'Attempt ' + (currentAttempt+1) + ': ' + date;
 
 
-        if (attempt.AttemptVM.TPScores && attempt.AttemptVM.TPScores.length > 0) {
-            var len = attempt.AttemptVM.TPScores.length;
+        if (attempt.TPScores && attempt.TPScores.length > 0) {
+            var len = attempt.TPScores.length;
             totalStats += "<tr>"
-            totalStats += "<td class='count'>" + attempt.AttemptVM.TPScores[len - 1].TotalPositScore + "</td>"; 
-            totalStats += "<td class='count'>" + attempt.AttemptVM.TPScores[len - 1].TotalTimeScore + "</td>"; 
-            totalStats += "<td class='count'>" + attempt.AttemptVM.TPScores[len - 1].TotalScore + "</td>"; 
+            totalStats += "<td class='count'>" + attempt.TPScores[len - 1].TotalPositScore + "</td>"; 
+            totalStats += "<td class='count'>" + attempt.TPScores[len - 1].TotalTimeScore + "</td>"; 
+            totalStats += "<td class='count'>" + attempt.TPScores[len - 1].TotalScore + "</td>"; 
             totalStats += "</tr>"
             $(totalStats).appendTo(document.getElementById('playerTotalsBody')).hide().show(2000);
         }
@@ -154,8 +153,7 @@ $(function () {
         var count = 1;
 
         console.log(attempt, "TPSCORES");
-        //AttemptVM.TPScores.TPScoreVM
-        for (const record of attempt.AttemptVM.TPScores) {
+        for (const record of attempt.TPScores) {
 
             var htmlRecord = "";
             var classStyle = "even";

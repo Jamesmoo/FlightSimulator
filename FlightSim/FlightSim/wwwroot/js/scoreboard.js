@@ -1,15 +1,15 @@
 $(function () {
 
     var globalEventId;
-    var globalPortId = 45458; 
 
     window.getLeaderboard = function getLeaderboard(eventId, userId) {
         $.ajax({
             /*url: 'https://192.168.100.100:' + globalPortId + '/api/Score?eventID=' + eventId, */
-            url: 'https://localhost:5001/ScoreByEventID.json',
+            url: 'http://52.222.21.67:8888/api/Score?eventID=' + eventId,
             type : 'GET',
             dataType : 'json',
-            success : function(data) {              
+            success: function (data) {
+                globalEventId = eventId;
                 loadResults(data, userId);
                 getEventListing();
             },
@@ -76,7 +76,7 @@ $(function () {
         var count = 1;
         var currentCallsign;
         $('tbody').empty();
-        document.getElementById('eventTitle').innerHTML = (data[0].UserScoreVM.EventName); 
+        document.getElementById('eventTitle').innerHTML = (data[0].EventName); 
         for (const record of data) {
            
             var htmlRecord = "";
@@ -86,19 +86,19 @@ $(function () {
                 classStyle = "odd";
             }
 
-            console.log("rank" + record.UserScoreVM.Rank);
+            console.log("rank" + record.Rank);
             //if (record.Rank === 1) {
-            if (record.UserScoreVM.Rank == 1) {
+            if (record.Rank == 1) {
                 htmlRecord += "<tr class='record winner " + classStyle + " num-" + count + "'" + " onclick = viewStats(\'" + record.UserID + "\')" + ">"; //open user
                 htmlRecord += "<td><img src='./images/star.png' class='star-align'>";
             } else {
                 htmlRecord += "<tr class='record " + classStyle + " num-" + count + "'" + " onclick = viewStats(\'" + record.UserID + "\')" + "><td>";
             }
 
-            htmlRecord += record.UserScoreVM.Rank + "</td>";
-            htmlRecord += "<td>" + record.UserScoreVM.Callsign + "</td>";
-            htmlRecord += "<td>" + record.UserScoreVM.Score + "</td>";
-            htmlRecord += "<td>" + record.UserScoreVM.Delta_TimeAtTOT + "</td></tr>"; //close user
+            htmlRecord += record.Rank + "</td>";
+            htmlRecord += "<td>" + record.Callsign + "</td>";
+            htmlRecord += "<td>" + record.Score + "</td>";
+            htmlRecord += "<td>" + record.Delta_TimeAtTOT + "</td></tr>"; //close user
 
             /* hiden stats panel */
          /* htmlRecord += "<tr class='record-stats num-" + count + "'>" +
@@ -120,8 +120,8 @@ $(function () {
             count++;
 
             console.log(record); 
-            if (userId && record.UserScoreVM.UserID == userId) {
-                currentCallsign = record.UserScoreVM.Callsign;
+            if (userId && record.UserID == userId) {
+                currentCallsign = record.Callsign;
             }
             
 
@@ -188,11 +188,12 @@ $(function () {
   
     $(window).bind("load", function () {
         var vars = {};
-        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
-            vars[key] = value;
-        });
+        var parts = window.location.search.substring(1).split('&');
+        //var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+           // vars[key] = value;
+        //});
         globalEventId = vars.eventId;
-        getLeaderboard(globalEventId, vars.userId);
+        getLeaderboard(parts[0].substring(parts[0].length - 1), parts[1].substring(parts[1].length - 1));
 
 
     });

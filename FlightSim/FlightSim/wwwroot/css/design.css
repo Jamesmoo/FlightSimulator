@@ -94,12 +94,12 @@ x-sign {
    font-family: 'Poppins', sans-serif
   }
 
-.statsInfo tr:hover td {
+/*.statsInfo tr:hover td {
     padding-top: 25px;
     padding-bottom: 25px;
     color: yellow;
-    font-family: 'Poppins', sans-serif
-}
+    font-family: 'Poppins', sans-serif;
+}*/
 
 .scoreboardTable th{
 	font-size:.9em;

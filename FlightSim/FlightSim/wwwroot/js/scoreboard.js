@@ -162,7 +162,6 @@ $(function () {
         var selectedValueName = "<label>" + selectDropdown.options[selectDropdown.selectedIndex].label + "</label>";
         getLeaderboard(globalEventId);
         document.getElementById('eventTitle').innerHTML = selectedValueName;
-
     }
 
     function openTab(evt, tabName) {

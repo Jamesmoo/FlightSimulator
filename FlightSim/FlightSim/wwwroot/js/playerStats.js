@@ -27,14 +27,10 @@ $(function () {
         if (attempts) {
             //Sort function to order by 
             attempts.sort(function (a, b) {
-                return new Date(b.AttemptVM.Date_Created) - Date(a.AttemptVM.Date_Created);
+                return Date(a.AttemptVM.Date_Created) - new Date(b.AttemptVM.Date_Created);
             });
-            //Build Attempt Title
-            var date = buildMonthDayYearDateString(attempts[0].AttemptVM.Date_Created);
-            document.getElementById('attemptNum').innerHTML = 'Attempted on: ' + date;
-            var callsign = attempts[0].AttemptVM.userVM.Callsign
-            
-            
+
+            var callsign = attempts[0].AttemptVM.userVM.Callsign 
             document.getElementById("playerTitle").innerHTML = callsign;
             loadPlayerStats(attempts[currentAttempt]);
         }
@@ -122,13 +118,13 @@ $(function () {
     function loadPlayerStats(attempt) {
         var attempList = "";
         var totalStats = ""; 
-        //console.log(attempt);
 
         $('#playerTotalsBody').empty();
         $('#tpTableBody').empty();
 
-        var date = buildMonthDayYearDateString(attempts[0].AttemptVM.Date_Created);
-        document.getElementById('attemptNum').innerHTML = 'Attempted on: ' + date;
+        //Build Attempt Title
+        var date = buildMonthDayYearDateString(attempt.AttemptVM.Date_Created);
+        document.getElementById('attemptNum').innerHTML = 'Attempt ' + (currentAttempt+1) + ': ' + date;
 
 
         if (attempt.AttemptVM.TPScores && attempt.AttemptVM.TPScores.length > 0) {

@@ -33,9 +33,8 @@ $(function () {
             var counter = 0;
             attempts.forEach((attempt) => {
                 if (attempt.TPScores.length > 0) {
-                    var totalScore = attempt.TPScores[0].TotalScore
-                    if ( totalScore === this.localStorage.getItem("score")) {
-                        if (attempt.Date_Created === this.localStorage.getItem("dateCreated")) {
+                    if (attempt.TPScores[0].TotalScore == this.localStorage.getItem("score")) {
+                        if (attempt.Date_Created == this.localStorage.getItem("dateCreated")) {
                             currentAttempt = counter;
                             //TIL: cant break out of a forEach loop
                         }
@@ -47,6 +46,7 @@ $(function () {
             var callsign = attempts[0].userVM.Callsign 
             document.getElementById("playerTitle").innerHTML = callsign;
             loadPlayerStats(attempts[currentAttempt]);
+            renderAttemptButtons(currentAttempt);
         }
     }
 
@@ -92,24 +92,40 @@ $(function () {
 
     }
 
-    window.playSound = function playSound() {
-        document.getElementById("soundEffect").play(); 
-    }
+    //window.playSound = function playSound() {
+    //    document.getElementById("soundEffect").play(); 
+    //}
 
-    window.stopSound = function stopSound() {
-        var sound = document.getElementById("soundEffect"); 
-        sound.pause(); 
-        sound.currentTime = 0; 
-    }
+    //window.stopSound = function stopSound() {
+    //    var sound = document.getElementById("soundEffect"); 
+    //    sound.pause(); 
+    //    sound.currentTime = 0; 
+    //}
 
-    function renderAttemptButtons() {
+    function renderAttemptButtons(startingAttempt) {
         if (attempts.length < 2) {
             document.getElementById("attemptNum").style.visibility = "hidden";
         }
-        if (attempts.length > 1) {
-            document.getElementById("buttonNavigation").style.display = "block"; 
-            document.getElementById("nextAttempt").style.visibility = "visible";
-            document.getElementById("lastAttempt").style.visibility = "visible";
+        else {
+            document.getElementById("buttonNavigation").style.display = "block";
+            if (startingAttempt == (attempts.length - 1)) {
+                document.getElementById("prevAttempt").style.visibility = "visible";
+                document.getElementById("firstAttempt").style.visibility = "visible";
+                document.getElementById("nextAttempt").style.visibility = "hidden";
+                document.getElementById("lastAttempt").style.visibility = "hidden";
+            }
+            else if (startingAttempt == 0) {
+                document.getElementById("nextAttempt").style.visibility = "visible";
+                document.getElementById("lastAttempt").style.visibility = "visible";
+                document.getElementById("prevAttempt").style.visibility = "hidden";
+                document.getElementById("firstAttempt").style.visibility = "hidden";
+            }
+            else {
+                document.getElementById("nextAttempt").style.visibility = "visible";
+                document.getElementById("lastAttempt").style.visibility = "visible";
+                document.getElementById("prevAttempt").style.visibility = "visible";
+                document.getElementById("firstAttempt").style.visibility = "visible";
+            }
         }
     }
 

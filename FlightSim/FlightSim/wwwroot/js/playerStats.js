@@ -29,6 +29,21 @@ $(function () {
                 return Date(a.Date_Created) - new Date(b.Date_Created);
             });
 
+            //Set the currentAttempt to the attempt that was selected on the scoreboard
+            var counter = 0;
+            attempts.forEach((attempt) => {
+                if (attempt.TPScores.length > 0) {
+                    var totalScore = attempt.TPScores[0].TotalScore
+                    if ( totalScore === this.localStorage.getItem("score")) {
+                        if (attempt.Date_Created === this.localStorage.getItem("dateCreated")) {
+                            currentAttempt = counter;
+                            //TIL: cant break out of a forEach loop
+                        }
+                    }
+                }
+                counter++;
+            });
+
             var callsign = attempts[0].userVM.Callsign 
             document.getElementById("playerTitle").innerHTML = callsign;
             loadPlayerStats(attempts[currentAttempt]);
@@ -43,8 +58,6 @@ $(function () {
         }
         document.getElementById("prevAttempt").style.visibility = "visible";
         document.getElementById("firstAttempt").style.visibility = "visible";
-
- 
     }
 
     window.clickBack = function clickBack() {
@@ -79,8 +92,6 @@ $(function () {
 
     }
 
-
-
     window.playSound = function playSound() {
         document.getElementById("soundEffect").play(); 
     }
@@ -90,7 +101,6 @@ $(function () {
         sound.pause(); 
         sound.currentTime = 0; 
     }
-
 
     function renderAttemptButtons() {
         if (attempts.length < 2) {
@@ -111,8 +121,6 @@ $(function () {
         return t.getDate() + '-' + monthNames[t.getMonth()] + '-' + t.getFullYear();
 
     }
-
-   
 
     function loadPlayerStats(attempt) {
         var attempList = "";

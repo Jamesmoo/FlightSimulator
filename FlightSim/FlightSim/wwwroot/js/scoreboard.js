@@ -1,8 +1,12 @@
 $(function () {
 
     var globalEventId;
+    let currentTab = 'first';
+    var sortedData;
+    var userId;
+    
 
-    window.getLeaderboard = function getLeaderboard(eventId, userId) {
+    window.getLeaderboard = function getLeaderboard(eventId, uId) {
         $.ajax({
             /*url: 'https://192.168.100.100:' + globalPortId + '/api/Score?eventID=' + eventId, */
             url: 'http://52.222.21.67:8888/api/Score?eventID=' + eventId,
@@ -10,13 +14,19 @@ $(function () {
             dataType : 'json',
             success: function (data) {
                 globalEventId = eventId;
-                loadResults(data, userId);
-                getEventListing();
+                userId = uId;
+                sortedData = filterScoresByBestAndFirst(data);
+                clickTab(currentTab, userId);
+                //getEventListing();
             },
             error : function(request, error){
                 console.error("Could not Retrieve Leaderboard scores");
             }
         });
+    }
+
+    window.clickTab = function clickTab(tabName) {
+        loadResults(sortedData[tabName], userId);
     }
 
     function getEventListing() {
@@ -34,9 +44,11 @@ $(function () {
         });
     }
 
-    window.viewStats = function viewStats(user) {
+    window.viewStats = function viewStats(user, score, dateCreated) {
         this.localStorage.setItem("userId", user);
         this.localStorage.setItem("eventId", globalEventId);
+        this.localStorage.setItem("score", score);
+        this.localStorage.setItem("dateCreated", dateCreated);
         window.location.href = "playerStats.html";
     }; 
 
@@ -72,13 +84,24 @@ $(function () {
     };
     
     function loadResults(data, userId) {
-        
+        if (data.length == 0)
+            return;
         var count = 1;
+        var currentRank = 1;
+        var currentScore, rankScore;
         var currentCallsign;
         $('tbody').empty();
-        document.getElementById('eventTitle').innerHTML = (data[0].EventName); 
+        document.getElementById('eventTitle').innerHTML = (data[0].EventName);
+        document.getElementById('eventTitle').classList.add('Oogaboogabooga');
         for (const record of data) {
-           
+            if (count == 1) {
+                rankScore = record.Score;
+            }
+            currentScore = record.Score;
+            if (currentScore < rankScore) {
+                currentRank++;
+                rankScore = currentScore;
+            }
             var htmlRecord = "";
             var classStyle = "even";
 
@@ -86,16 +109,14 @@ $(function () {
                 classStyle = "odd";
             }
 
-            console.log("rank" + record.Rank);
-            //if (record.Rank === 1) {
-            if (record.Rank == 1) {
-                htmlRecord += "<tr class='record winner " + classStyle + " num-" + count + "'" + " onclick = viewStats(\'" + record.UserID + "\')" + ">"; //open user
+            if (currentRank == 1) {
+                htmlRecord += "<tr class='record winner " + classStyle + " num-" + count + "'" + " onclick = viewStats(\'" + record.UserID + "\',\'"+record.Score+"\',\'"+record.DateCreated+"\')>";
                 htmlRecord += "<td><img src='./images/star.png' class='star-align'>";
             } else {
-                htmlRecord += "<tr class='record " + classStyle + " num-" + count + "'" + " onclick = viewStats(\'" + record.UserID + "\')" + "><td>";
+                htmlRecord += "<tr class='record " + classStyle + " num-" + count + "'" + " onclick = viewStats(\'" + record.UserID + "\',\'"+record.Score+"\',\'"+record.DateCreated+"\')><td>";
             }
-
-            htmlRecord += record.Rank + "</td>";
+            
+            htmlRecord += currentRank + "</td>";
             htmlRecord += "<td>" + record.Callsign + "</td>";
             htmlRecord += "<td>" + record.Score + "</td>";
             htmlRecord += "<td>" + record.Delta_TimeAtTOT + "</td></tr>"; //close user
@@ -119,7 +140,6 @@ $(function () {
             
             count++;
 
-            console.log(record); 
             if (userId && record.UserID == userId) {
                 currentCallsign = record.Callsign;
             }
@@ -184,6 +204,51 @@ $(function () {
         document.getElementById(tabName).style.display = "block";
         evt.currentTarget.className += " active";
     }
+
+    function filterScoresByBestAndFirst(data) {
+        //var sortedScores = {
+        //    userId: {
+        //        first: { record },
+        //        best: { record }
+        //    }
+        //};
+        var userScores = {};
+        data.map(record => {
+            if (userScores[record.UserID] === undefined) {
+                // new user
+                userScores[record.UserID] = {
+                    first: record,
+                    best: record
+                };
+            }
+            else {
+                if (userScores[record.UserID].best.Score_P3D < record.Score_P3D) {
+                    userScores[record.UserID].best = record;
+                }
+                if (new Date(userScores[record.UserID].first.DateCreated) > new Date(record.DateCreated)) {
+                    userScores[record.UserID].first = record;
+                }
+            }
+        });
+
+        let sortedScores = { first: [], best: [] }
+
+        // map through user scores and place them into the respective array in sortedScores
+        Object.keys(userScores).map(userId => {
+            sortedScores.first.push(userScores[userId].first);
+            sortedScores.best.push(userScores[userId].best);
+        });
+
+        // sort each array in sorted scores
+        sortedScores.first = sortedScores.first.sort(scoreComparator);
+        sortedScores.best = sortedScores.best.sort(scoreComparator);
+
+        return sortedScores;
+    }
+
+    var scoreComparator = (a, b) => {
+        return b.Score - a.Score;
+    };
 
   
     $(window).bind("load", function () {

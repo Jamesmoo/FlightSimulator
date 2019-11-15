@@ -254,12 +254,11 @@ $(function () {
     $(window).bind("load", function () {
         var vars = {};
         var parts = window.location.search.substring(1).split('&');
-        //var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
-           // vars[key] = value;
-        //});
-        globalEventId = vars.eventId;
-        getLeaderboard(parts[0].substring(parts[0].length - 1), parts[1].substring(parts[1].length - 1));
-
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+            vars[key] = value;
+        });
+        globalEventId = vars.eventID;
+        getLeaderboard(vars.eventID, vars.userID);
 
     });
 });

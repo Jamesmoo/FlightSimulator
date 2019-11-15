@@ -92,7 +92,7 @@ $(function () {
         var currentCallsign;
         $('tbody').empty();
         document.getElementById('eventTitle').innerHTML = (data[0].EventName);
-        document.getElementById('eventTitle').classList.add('Oogaboogabooga');
+        document.getElementById('eventTitle').classList.add('selectedUser');
         for (const record of data) {
             if (count == 1) {
                 rankScore = record.Score;

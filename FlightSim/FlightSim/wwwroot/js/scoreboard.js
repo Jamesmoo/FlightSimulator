@@ -156,9 +156,6 @@ $(function () {
             if (userId && record.UserID == userId) {
                 currentCallsign = record.Callsign;
             }
-            
-
-
         }
 
         $('.record').on('click', function (event) {

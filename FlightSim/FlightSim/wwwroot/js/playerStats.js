@@ -137,7 +137,8 @@ $(function () {
         var time = timestamp.substring(10, timestamp.length - 1);
         var t = new Date(timestamp);
         //return t.getDate() + '-' + monthNames[t.getMonth()] + '-' + t.getFullYear();
-        return t.getDate() + '-' + monthNames[t.getMonth()] + '-' + t.getFullYear() + " " + t.getHours() + ":" + t.getMinutes() + ":" + t.getSeconds();
+        return t.getDate() + '-' + monthNames[t.getMonth()] + '-' + t.getFullYear() + " "
+            + (t.getHours() < 10 ? '0' : '') + + t.getHours() + ":" + (t.getMinutes() < 10 ? '0' : '') + t.getMinutes() + ":" + (t.getSeconds() < 10 ? '0' : '') + t.getSeconds();
 
 
     }

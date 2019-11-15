@@ -13,7 +13,6 @@ $(function () {
             success: function (data) {
                 attempts = data;
                 setPlayerAttemptList();
-                renderAttemptButtons();
 
             },
             error: function (request, error) {
@@ -72,8 +71,9 @@ $(function () {
     }
 
     window.clickFirst = function clickFirst() {
-        loadPlayerStats(attempts[0]);
         currentAttempt = 0;
+        loadPlayerStats(attempts[0]);
+        
         document.getElementById("nextAttempt").style.visibility = "visible";
         document.getElementById("lastAttempt").style.visibility = "visible";
 
@@ -82,8 +82,9 @@ $(function () {
     }
 
     window.clickLast = function clickLast() {
-        loadPlayerStats(attempts[attempts.length - 1]);
         currentAttempt = attempts.length - 1;
+        loadPlayerStats(attempts[attempts.length - 1]);
+        
         document.getElementById("nextAttempt").style.visibility = "hidden";
         document.getElementById("lastAttempt").style.visibility = "hidden";
 
@@ -132,9 +133,12 @@ $(function () {
     function buildMonthDayYearDateString(timestamp) {
         var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
             "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-        var monthDayYear = timestamp.substring(0,10);
-        var t = new Date(monthDayYear);
-        return t.getDate() + '-' + monthNames[t.getMonth()] + '-' + t.getFullYear();
+        var monthDayYear = timestamp.substring(0, 10);
+        var time = timestamp.substring(10, timestamp.length - 1);
+        var t = new Date(timestamp);
+        //return t.getDate() + '-' + monthNames[t.getMonth()] + '-' + t.getFullYear();
+        return t.getDate() + '-' + monthNames[t.getMonth()] + '-' + t.getFullYear() + " " + t.getHours() + ":" + t.getMinutes() + ":" + t.getSeconds();
+
 
     }
 

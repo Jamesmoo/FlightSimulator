@@ -109,11 +109,24 @@ $(function () {
                 classStyle = "odd";
             }
 
-            if (currentRank == 1) {
-                htmlRecord += "<tr class='record winner " + classStyle + " num-" + count + "'" + " onclick = viewStats(\'" + record.UserID + "\',\'"+record.Score+"\',\'"+record.DateCreated+"\')>";
+            if (currentRank == 1 && record.UserID === userId) {
+                htmlRecord += "<tr class='record winner " + classStyle + " num-" + count + " " + "selectedUser" + "'" + " onclick = viewStats(\'" + record.UserID + "\',\'" + record.Score + "\',\'" + record.DateCreated + "\')>";
                 htmlRecord += "<td><img src='./images/star.png' class='star-align'>";
-            } else {
+            }
+            else if (currentRank == 1) {
+                htmlRecord += "<tr class='record winner " + classStyle + " num-" + count + "'" + " onclick = viewStats(\'" + record.UserID + "\',\'" + record.Score + "\',\'" + record.DateCreated + "\')>";
+                htmlRecord += "<td><img src='./images/star.png' class='star-align'>";
+            }
+            else if (record.UserID === userId)
+            {
+                htmlRecord += "<tr class='record winner " + classStyle + " num-" + count + " " + "selectedUser" + "'" + " onclick = viewStats(\'" + record.UserID + "\',\'" + record.Score + "\',\'" + record.DateCreated + "\')><td>";
+            }
+            else {
                 htmlRecord += "<tr class='record " + classStyle + " num-" + count + "'" + " onclick = viewStats(\'" + record.UserID + "\',\'"+record.Score+"\',\'"+record.DateCreated+"\')><td>";
+            }
+
+            if (record.UserID === userId) {
+
             }
             
             htmlRecord += currentRank + "</td>";
@@ -170,7 +183,6 @@ $(function () {
         if (userId) {
             var rowPos = $("#scoreboardTable tr:contains(" + currentCallsign + ")").position();
             var rowOffset = Number(rowPos.top) - 75;
-            console.log(typeof row);
             $('#tableContainer').scrollTop(rowOffset);
         }
 
@@ -253,7 +265,6 @@ $(function () {
   
     $(window).bind("load", function () {
         var vars = {};
-        var parts = window.location.search.substring(1).split('&');
         var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
             vars[key] = value;
         });
